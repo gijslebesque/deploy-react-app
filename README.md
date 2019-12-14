@@ -34,7 +34,7 @@ In app.js make sure you serve static react files:
 app.use(express.static(path.join(__dirname, "build")));
 ```
 
-After all your other routes add the folliwing code to always serve your react app.
+After all your other routes add the following code to always serve your react app.
 
 ```
 app.get("/*", function(req, res) {

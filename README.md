@@ -42,16 +42,21 @@ app.get("/*", function(req, res) {
 });
 ```
 
-In your /server file package.json add:
+In your /server folder npm install rimraf from npm in order to be able to easily delete folders.
 
 ```
-"deploy": "cd ../client && npm run build && rsync -r build ../server/ && cd .. && git subtree push --prefix server heroku master"
+$ npm install rimraf
+```
 
+the update your package.json by adding the folliwing npm script:
+
+```
+"deploy": "rimraf build && cd ../client && npm run build && mv build ../server/ && cd .. && git subtree push --prefix server heroku master"
 ```
 
 ## 4. Deploy
 
-1. Add the location of your heroku repository to git by running the folliwing command:
+1. Add the location of your heroku repository to git by running the following command:
 
 ```
 heroku git:remote -a name-of-your-app
